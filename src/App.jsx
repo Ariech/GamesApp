@@ -5,7 +5,7 @@ function App() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(`https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}`)
+    fetch(`/api/games?key=${import.meta.env.VITE_API_KEY}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
