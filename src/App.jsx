@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import GamesList from "./Components/GamesList";
 
 function App() {
   const [data, setData] = useState([]);
@@ -20,11 +21,7 @@ function App() {
 
   return (
     <>
-      {data.results ? (
-        data.results.map((result) => <div key={result.id}>{result.name}</div>)
-      ) : (
-        <p>Loading...</p>
-      )}
+      <GamesList data={data} />
     </>
   );
 }
