@@ -1,8 +1,8 @@
-function GamesList({ data }) {
+function GamesList({ gameData }) {
   return (
     <>
-      {data.results ? (
-        data.results.map((result) => (
+      {gameData.results ? (
+        gameData.results.map((result) => (
           <div key={result.id}>
             <p>Game name: {result.name}</p>
             <p>Released: {result.released}</p>
