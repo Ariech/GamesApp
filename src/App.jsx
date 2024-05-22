@@ -24,7 +24,11 @@ function App() {
   };
 
   useEffect(() => {
-    getGameRequest();
+    const debounceFetch = setTimeout(() => {
+      getGameRequest();
+    }, 300);
+
+    return () => clearTimeout(debounceFetch);
   }, [searchValue]);
 
   return (
