@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./App.css";
 import GamesList from "./Components/GamesList";
-import SearchBar from "./Components/SearchBar";
+import SearchBox from "./Components/SearchBox";
 
 function App() {
   const [gameData, setGameData] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
-  const getGameRequest = () => {
+  const getGameRequest = useCallback(() => {
     fetch(
       `/api/games?key=${import.meta.env.VITE_API_KEY}&search=${searchValue}`
     )
@@ -21,7 +21,7 @@ function App() {
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
       });
-  };
+  }, [searchValue]);
 
   useEffect(() => {
     const debounceFetch = setTimeout(() => {
@@ -29,11 +29,11 @@ function App() {
     }, 300);
 
     return () => clearTimeout(debounceFetch);
-  }, [searchValue]);
+  }, [searchValue, getGameRequest]);
 
   return (
     <>
-      <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
+      <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
       <GamesList gameData={gameData} />
     </>
   );

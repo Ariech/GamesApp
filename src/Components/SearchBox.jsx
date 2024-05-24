@@ -1,4 +1,4 @@
-const SearchBar = ({ searchValue, setSearchValue }) => {
+const SearchBox = ({ searchValue, setSearchValue }) => {
   return (
     <>
       <input
@@ -10,4 +10,4 @@ const SearchBar = ({ searchValue, setSearchValue }) => {
   );
 };
 
-export default SearchBar;
+export default SearchBox;
